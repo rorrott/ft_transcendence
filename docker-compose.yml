@@ -1,0 +1,90 @@
+services:
+  auth-service:
+    build:
+      context: ./backend/auth-service
+    container_name: auth-service
+    ports:
+      - "5500:5500"
+    volumes:
+      - auth-db:/app/database
+
+  user-service:
+    build:
+      context: ./backend/user-service
+    container_name: user-service
+    ports:
+      - "5501:5501"
+    volumes:
+      - user-db:/app/database
+      - user-uploads:/app/uploads
+      - /app/node_modules
+    depends_on:
+      - auth-service
+
+  tournament-service:
+    build:
+      context: ./backend/tournament-service
+    container_name: tournament-service
+    ports:
+      - "5600:5600"
+    volumes:
+      - tournament-db:/app/database
+    depends_on:
+      - auth-service
+      - user-service
+
+  livechat-service:
+    build:
+      context: ./backend/livechat
+    container_name: livechat-service
+    volumes:
+      - livechat-db:/app/database
+    ports:
+      - "6002:6002"
+    depends_on:
+      - auth-service
+      - user-service
+
+  frontend-builder:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-builder
+    volumes:
+      - frontend-build:/app/dist
+      - ./frontend/src:/app/src
+    command: npm run dev
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: nginx
+    ports:
+      - "8443:443"
+    volumes:
+      - frontend-build:/usr/share/nginx/html
+      - user-uploads:/var/www/uploads
+    depends_on:
+      - auth-service
+      - user-service
+      - tournament-service
+      - frontend-builder
+    command:
+      [
+        "/wait-for-service.sh",
+        "auth-service:5500",
+        "user-service:5501",
+        "tournament-service:5600",
+        "frontend-builder:3000",
+      ]
+    restart: always
+
+volumes:
+  auth-db:
+  user-db:
+  tournament-db:
+  lobby-db:
+  frontend-build:
+  livechat-db:
+  user-uploads:

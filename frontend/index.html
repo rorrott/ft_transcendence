@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pong42</title>
+  <link href="src/styles/tailwind_output.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="public/icons/favicon-white.png">
+</head>
+<body class="min-h-screen flex flex-col font-press text-[13px] sm:text-[11px] md:text-[12px]">
+	<header class="bg-black text-white flex flex-col sm:flex-row sm:justify-between sm:items-center px-4 py-3 space-y-2 sm:space-y-0">
+		<button data-link href="/" class="  text-xl">Pong 42</button>
+		<nav id="mainNav" class="flex justify-end space-x-4 "></nav>
+	</header>
+	<!-- LiveChat button fixed bottom-right -->
+<button id="liveChatToggleBtn" style="
+  position: fixed; bottom: 20px; right: 20px; 
+  z-index: 1000; padding: 10px 15px; 
+  border-radius: 8px; background-color: #007bff; 
+  color: white; border: none; cursor: pointer;
+  display: none;
+">Live Chat</button>
+
+<!-- LiveChat panel sliding in from left -->
+<div id="liveChatPanel" style="
+  position: fixed; top: 0; left: 0; height: 100vh; 
+  width: 300px; background: white; 
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+">
+  <div id="liveChatHeader" style="padding: 15px; border-bottom: 1px solid #ccc; font-weight: bold;">
+    Friends
+  </div>
+  <ul id="friendsList" style="flex-grow: 1; overflow-y: auto; list-style: none; margin: 0; padding: 0;">
+    <!-- Friends will be appended here -->
+  </ul>
+      <div id="chatContainer" style="display: none; flex-direction: column; height: calc(100vh - 60px); padding: 10px;">
+    <button id="backToFriendsBtn" style="margin-bottom: 10px; flex-shrink: 0;">← Back to friends</button>
+    <div id="chatMessages" style="flex: 1; overflow-y: auto; border: 1px solid #ddd; padding: 5px; margin-bottom: 10px; min-height: 0; max-height: calc(100vh - 140px);"></div>
+    <input id="chatInput" type="text" placeholder="Type your message..." style="width: 100%; padding: 8px; border: 1px solid #ccc; flex-shrink: 0;" />
+  </div>
+</div>
+	<script src="/build-id.js"></script>
+	<main id="mainContent"  class="bg-custom bg-animated"></main>
+	<script type="module" src="src/scripts/main.ts"></script>
+</body>
+</html>

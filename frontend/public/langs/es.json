@@ -1,0 +1,55 @@
+{
+    "nav_home": "Inicio",
+    "nav_signup": "Registrarse",
+    "nav_signin": "Iniciar sesión",
+    "nav_language": "Idioma",
+    "singleplayer": "Un jugador",
+    "multiplayer": "Multijugador",
+    "tournament": "Torneo",
+    "nav_search": "Buscar",
+    "nav_profile": "Perfil",
+    "nav_signout": "Cerrar sesión",
+
+    "welcome": "Bienvenido a Pong 42",
+
+    "create_new_ac": "Crear nueva cuenta:",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "cf_password": "Confirmar contraseña",
+    "register": "Registrarse",
+
+    "login_pong_42": "Iniciar sesión en Pong 42",
+    "login": "Iniciar sesión",
+    "login_gg": "Iniciar sesión con Google",
+
+    "edit_profile": "Editar perfil",
+    "total": "Total",
+    "win": "Ganadas",
+    "lose": "Perdidas",
+    "history": "Historial",
+    "no_history_yet": "Aún no hay historial",
+
+    "tournament_players": "Jugadores del torneo",
+    "cancel": "Cancelar",
+    "start": "Iniciar",
+
+    "add_friend": "Agregar amigo",
+    "remove_friend": "Eliminar",
+    "block": "Bloquear",
+
+    "multi_players": "Jugadores",
+    "single_title": "¡Juega contra la IA!",
+    "multi_title": "¡Juega contra tus amigos en tiempo real!",
+    "tournament_title": "¡Juega contra otros jugadores en un torneo!",
+    "changeAvt": "Cambiar avatar",
+    "time": "Tiempo",
+    "score": "Puntuación",
+    "opponent": "Oponente",
+    "status": "Estado",
+    "save": "Guardar",
+    "pending_request": "Solicitud pendiente",
+    "friends": "Amigos",
+    "delete_account": "Eliminar cuenta",
+    "statistics": "Estadística",
+    "choose_avatar": "Elige Avatar"
+}
